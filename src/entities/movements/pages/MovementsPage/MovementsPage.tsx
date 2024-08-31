@@ -1,11 +1,12 @@
 import { useEffect } from "react";
-import useAppStore from "../../../../store/useAppStore";
-import { useMovementsQuery } from "../../queries/useMovementsQuery";
-import Loading from "../../../../components/Loading";
+import useAppStore from "@/store/useAppStore";
+import { useMovementsQuery } from "@movements/queries/useMovementsQuery";
+import Loading from "@/components/Loading";
+import Error from "@/components/Error";
 
 const MovementsPage: React.FC = () => {
   const { movements, loadMovements } = useAppStore((state) => state);
-  const { data, isSuccess, isLoading } = useMovementsQuery(1);
+  const { data, isSuccess, isLoading, isError } = useMovementsQuery(1);
 
   useEffect(() => {
     if (isSuccess) {
@@ -17,6 +18,7 @@ const MovementsPage: React.FC = () => {
     <>
       <h1>Movimientos ({movements.length})</h1>
       {isLoading && <Loading />}
+      {isError && <Error />}
     </>
   );
 };

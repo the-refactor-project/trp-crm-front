@@ -1,0 +1,14 @@
+.error-container {
+  position: fixed;
+  inset: 0;
+  background-color: #000d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.error {
+  background-color: #ab102f;
+  padding: 20px;
+  color: #fff;
+}
