@@ -5,7 +5,7 @@ import {
   Route,
 } from "react-router-dom";
 import App from "../components/App";
-import MovementsPage from "../movements/pages/MovementsPage/MovementsPage";
+import MovementsPage from "../entities/movements/pages/MovementsPage/MovementsPage";
 import NotFoundPage from "../pages/NotFoundPage";
 
 const router = createBrowserRouter(
