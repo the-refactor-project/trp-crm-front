@@ -1,5 +1,7 @@
+import Layout from "../Layout";
+
 const App: React.FC = () => {
-  return <>Dinereitor</>;
+  return <Layout />;
 };
 
 export default App;
