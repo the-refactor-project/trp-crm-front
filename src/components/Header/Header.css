@@ -1,0 +1,19 @@
+.main-header {
+  height: 3rem;
+  color: #fff;
+  background-color: #211f1f;
+}
+
+.main-header__app-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.main-header__logo {
+  height: 30px;
+}
+
+.main-header__title {
+  font-size: 2rem;
+}
