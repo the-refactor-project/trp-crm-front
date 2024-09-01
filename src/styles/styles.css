@@ -13,7 +13,8 @@ body {
   font-family: Nunito, sans-serif;
 }
 
-button {
+button,
+input {
   font: inherit;
   background-color: transparent;
   border: none;
