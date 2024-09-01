@@ -18,7 +18,7 @@ const MovementsPage: React.FC = () => {
     <>
       <h1>Movimientos ({movements.length})</h1>
       {isLoading && <Loading />}
-      {isError && <Error />}
+      {isError && <Error message="No se han podido cargar los datos" />}
     </>
   );
 };
