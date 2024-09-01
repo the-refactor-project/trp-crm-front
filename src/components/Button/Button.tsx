@@ -10,7 +10,11 @@ const Button: React.FC<PropsWithChildren<ButtonProps>> = ({
   const buttonClassName = "button";
   props.className = `${props.className ? props.className + " " : ""}${buttonClassName}`;
 
-  return <button {...props}>{children}</button>;
+  return (
+    <button {...props} type={`${props.type ?? "button"}`}>
+      {children}
+    </button>
+  );
 };
 
 export default Button;

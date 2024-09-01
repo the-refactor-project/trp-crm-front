@@ -1,11 +1,19 @@
 .button {
-  background-color: var(--accent-color);
-  color: #fff;
   padding: 5px 10px;
   cursor: pointer;
+  border: 1px solid transparent;
   transition: opacity 0.2s;
 
   &:hover {
     opacity: 0.8;
   }
+}
+
+.button--solid {
+  background-color: var(--accent-color);
+  color: #fff;
+}
+
+.button--outline {
+  border-color: var(--accent-color);
 }

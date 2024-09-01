@@ -1,7 +1,32 @@
-import Button from "../Button";
+import ButtonSolid from "../ButtonSolid";
+import MultiButton from "../MultiButton";
 import "./MovementForm.css";
 
 const MovementForm: React.FC = () => {
+  const currencyButtons = [
+    {
+      text: "€",
+      value: "EUR",
+      isDefault: true,
+    },
+    {
+      value: "USD",
+      text: "$",
+    },
+  ];
+
+  const typeButtons = [
+    {
+      text: "ingreso",
+      value: "in",
+      isDefault: true,
+    },
+    {
+      value: "out",
+      text: "gasto",
+    },
+  ];
+
   return (
     <form className="form">
       <div className="form__group">
@@ -22,14 +47,16 @@ const MovementForm: React.FC = () => {
         </label>
         <input type="number" className="form__control" id="quantity" />
       </div>
-      <div className="form__group">
-        <input type="radio" name="currency" id="currency-euro" value="EUR" />
-        <label htmlFor="currency-euro">€</label>
-        <input type="radio" name="currency" id="currency-dollar" value="USD" />
-        <label htmlFor="currency-dollar">$</label>
+      <div className="form__group form__group--inline">
+        <span className="form__label">Moneda:</span>
+        <MultiButton id="currency" buttons={currencyButtons} value="EUR" />
+      </div>
+      <div className="form__group form__group--inline">
+        <span className="form__label">Tipo:</span>
+        <MultiButton id="type" buttons={typeButtons} value="out" />
       </div>
       <div className="form__group">
-        <Button type="submit">Crear</Button>
+        <ButtonSolid type="submit">Crear</ButtonSolid>
       </div>
     </form>
   );

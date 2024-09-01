@@ -1,12 +1,12 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import useAppStore from "@/store/useAppStore";
 import { useMovementsQuery } from "@movements/queries/useMovementsQuery";
 import Loading from "@/components/Loading";
 import Error from "@/components/Error";
 import MovementsTable from "@movements/components/MovementsTable";
-import Button from "@/components/Button";
-import { useNavigate } from "react-router-dom";
 import { getPath } from "@/router/paths";
+import ButtonSolid from "@/components/ButtonSolid";
 
 const MovementsPage: React.FC = () => {
   const { movements, loadMovements } = useAppStore((state) => state);
@@ -27,7 +27,7 @@ const MovementsPage: React.FC = () => {
     <>
       <header className="section-header">
         <h1>Movimientos ({movements.length})</h1>
-        <Button onClick={navigateToNewMovementPage}>Nuevo</Button>
+        <ButtonSolid onClick={navigateToNewMovementPage}>Nuevo</ButtonSolid>
       </header>
       <MovementsTable movements={movements} />
       {isLoading && <Loading />}

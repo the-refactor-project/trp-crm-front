@@ -11,6 +11,11 @@
   gap: 5px;
 }
 
+.form__group--inline {
+  flex-direction: row;
+  align-items: center;
+}
+
 .form__control {
   border: 1px solid var(--accent-color);
   padding: 5px 10px;
