@@ -1,3 +1,4 @@
+import Navigation from "../Navigation";
 import "./Header.css";
 
 const Header: React.FC = () => {
@@ -14,6 +15,7 @@ const Header: React.FC = () => {
           />
           <span className="main-header__title">Dinereitor</span>
         </div>
+        <Navigation />
       </div>
     </header>
   );

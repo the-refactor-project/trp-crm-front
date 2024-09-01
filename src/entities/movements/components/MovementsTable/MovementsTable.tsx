@@ -21,7 +21,6 @@ const MovementsTable: React.FC<MovementsTableProps> = ({ movements }) => {
           <th className="datatable__cell datatable__cell--quantity">
             Cantidad
           </th>
-          <th className="datatable__cell">&nbsp;</th>
         </tr>
       </thead>
       <tbody>
@@ -40,7 +39,6 @@ const MovementsTable: React.FC<MovementsTableProps> = ({ movements }) => {
                 {quantity}
                 {currencies[currency]}
               </td>
-              <td className="datatable__cell"></td>
             </tr>
           ),
         )}
