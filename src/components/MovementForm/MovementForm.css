@@ -20,3 +20,12 @@
   border: 1px solid var(--accent-color);
   padding: 5px 10px;
 }
+
+.form__control--mini {
+  width: 100px;
+}
+
+.form__inline-groups {
+  display: flex;
+  gap: 20px;
+}

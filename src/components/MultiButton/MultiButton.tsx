@@ -1,13 +1,15 @@
 import ButtonSolid from "../ButtonSolid";
 import "./MultiButton.css";
 
+export type ButtonProperties = {
+  text: string;
+  value: string;
+};
+
 interface MultiButtonProps {
   id: string;
   value: string;
-  buttons: {
-    text: string;
-    value: string;
-  }[];
+  buttons: ButtonProperties[];
   onChange?: (value: string) => void;
 }
 
