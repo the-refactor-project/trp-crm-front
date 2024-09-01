@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
+import { getPath } from "@/router/paths";
 import "./Navigation.css";
-import { getPath } from "../../router/paths";
 
 const Navigation: React.FC = () => {
   return (

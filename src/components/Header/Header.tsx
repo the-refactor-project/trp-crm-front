@@ -1,4 +1,4 @@
-import Navigation from "../Navigation";
+import Navigation from "@/components/Navigation";
 import "./Header.css";
 
 const Header: React.FC = () => {

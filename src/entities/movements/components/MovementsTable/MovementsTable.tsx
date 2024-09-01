@@ -1,4 +1,4 @@
-import { MovementStructure } from "../../schema";
+import { MovementStructure } from "@movements/schema";
 import "./MovementsTable.css";
 
 interface MovementsTableProps {

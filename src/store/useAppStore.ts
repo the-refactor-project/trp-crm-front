@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { MovementStructure } from "../entities/movements/schema";
+import { MovementStructure } from "@/entities/movements/schema";
 
 interface AppStore {
   movements: MovementStructure[];

@@ -3,10 +3,10 @@ import useAppStore from "@/store/useAppStore";
 import { useMovementsQuery } from "@movements/queries/useMovementsQuery";
 import Loading from "@/components/Loading";
 import Error from "@/components/Error";
-import MovementsTable from "../../components/MovementsTable";
-import Button from "../../../../components/Button";
+import MovementsTable from "@movements/components/MovementsTable";
+import Button from "@/components/Button";
 import { useNavigate } from "react-router-dom";
-import { getPath } from "../../../../router/paths";
+import { getPath } from "@/router/paths";
 
 const MovementsPage: React.FC = () => {
   const { movements, loadMovements } = useAppStore((state) => state);
