@@ -1,0 +1,11 @@
+.button {
+  background-color: var(--accent-color);
+  color: #fff;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

@@ -13,7 +13,7 @@ export const getPath = (
   child?: keyof (typeof paths)[BasePath],
 ): string => {
   if (child) {
-    return `${paths[base].root}/${paths[base][child]}`;
+    return `/${paths[base].root}/${paths[base][child]}`;
   }
 
   return paths[base].root;
