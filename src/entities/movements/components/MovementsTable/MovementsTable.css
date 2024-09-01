@@ -1,0 +1,31 @@
+.datatable {
+  border-collapse: collapse;
+  width: 100%;
+
+  th {
+    text-align: left;
+  }
+}
+
+.datatable__row {
+  display: flex;
+}
+
+.datatable__cell {
+  border-bottom: 1px solid #333;
+  padding: 10px;
+  flex: 1;
+}
+
+.datatable__cell--checkbox {
+  flex: 0 40px;
+}
+
+.datatable__cell--date {
+  flex: 0 100px;
+}
+
+.datatable__cell--quantity {
+  text-align: right;
+  flex: 0 80px;
+}
