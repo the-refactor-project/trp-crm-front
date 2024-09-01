@@ -6,9 +6,11 @@ const Layout: React.FC = () => {
   return (
     <>
       <Header />
-      <div className="container">
-        <Outlet />
-      </div>
+      <main className="main-content">
+        <div className="container">
+          <Outlet />
+        </div>
+      </main>
     </>
   );
 };

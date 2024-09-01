@@ -1,7 +1,7 @@
 .main-header {
   height: 3rem;
   color: #fff;
-  background-color: #211f1f;
+  background-color: var(--accent-color);
 }
 
 .main-header__app-title {
