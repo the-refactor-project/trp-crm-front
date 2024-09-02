@@ -27,3 +27,20 @@ export const useAddMovementMutation = () => {
     },
   });
 };
+
+export const useDeleteMovement = () => {
+  return useMutation({
+    mutationFn: async (movementId: MovementStructure["_id"]) => {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/movements/${movementId}`,
+        {
+          method: "DELETE",
+        },
+      );
+
+      if (!response.ok) {
+        throw new Error("Error al eliminar el movimiento");
+      }
+    },
+  });
+};

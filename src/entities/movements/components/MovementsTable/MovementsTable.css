@@ -15,6 +15,8 @@
   border-bottom: 1px solid #333;
   padding: 10px;
   flex: 1;
+  display: flex;
+  align-items: center;
 }
 
 .datatable__cell--checkbox {
@@ -28,4 +30,8 @@
 .datatable__cell--quantity {
   text-align: right;
   flex: 0 80px;
+}
+
+.datatable__cell--actions {
+  flex: 0 100px;
 }
