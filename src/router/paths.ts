@@ -16,5 +16,5 @@ export const getPath = (
     return `/${paths[base].root}/${paths[base][child]}`;
   }
 
-  return paths[base].root;
+  return `/${paths[base].root}`;
 };
