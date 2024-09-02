@@ -8,7 +8,7 @@
 }
 
 .error {
-  background-color: #ab102f;
+  background-color: var(--error-color);
   padding: 20px;
   color: #fff;
 }

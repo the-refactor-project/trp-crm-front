@@ -11,7 +11,8 @@
   gap: 5px;
 }
 
-.form__group--inline {
+.form__group--inline,
+.form__field--inline {
   flex-direction: row;
   align-items: center;
 }
@@ -28,4 +29,15 @@
 .form__inline-groups {
   display: flex;
   gap: 20px;
+}
+
+.form__error {
+  color: #f00;
+  font-size: 0.9rem;
+  height: 20px;
+  visibility: hidden;
+}
+
+.form__error--visible {
+  visibility: visible;
 }

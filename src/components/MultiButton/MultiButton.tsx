@@ -10,7 +10,7 @@ interface MultiButtonProps {
   id: string;
   value: string;
   buttons: ButtonProperties[];
-  onChange?: (value: string) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const MultiButton: React.FC<MultiButtonProps> = ({
@@ -24,7 +24,14 @@ const MultiButton: React.FC<MultiButtonProps> = ({
       return;
     }
 
-    onChange(value);
+    const event = {
+      target: {
+        value,
+        id,
+      },
+    } as React.ChangeEvent<HTMLInputElement>;
+
+    onChange(event);
   };
 
   return (
