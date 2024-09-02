@@ -1,6 +1,8 @@
+import { useFormik } from "formik";
 import ButtonSolid from "../ButtonSolid";
 import MultiButton from "../MultiButton";
 import { ButtonProperties } from "../MultiButton/MultiButton";
+import { MovementDataStructure } from "../../entities/movements/schema";
 import "./MovementForm.css";
 
 const MovementForm: React.FC = () => {
@@ -26,8 +28,25 @@ const MovementForm: React.FC = () => {
     },
   ];
 
+  const initialFormValues: MovementDataStructure = {
+    currency: "EUR",
+    description: "",
+    quantity: 0,
+    type: "out",
+    date: new Date(),
+  };
+
+  const submitForm = (movementData: MovementDataStructure) => {
+    console.log(movementData);
+  };
+
+  const form = useFormik({
+    initialValues: initialFormValues,
+    onSubmit: submitForm,
+  });
+
   return (
-    <form className="form">
+    <form className="form" onSubmit={form.handleSubmit}>
       <div className="form__group form__group--inline">
         <span className="form__label">Tipo:</span>
         <MultiButton id="type" buttons={typeButtons} value="out" />

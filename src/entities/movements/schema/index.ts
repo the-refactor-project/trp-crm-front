@@ -10,3 +10,4 @@ export const movementSchema = z.object({
 });
 
 export type MovementStructure = z.infer<typeof movementSchema>;
+export type MovementDataStructure = Omit<MovementStructure, "id">;

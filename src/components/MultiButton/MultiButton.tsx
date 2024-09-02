@@ -30,10 +30,11 @@ const MultiButton: React.FC<MultiButtonProps> = ({
   return (
     <div className="multi-button">
       <input type="hidden" id={id} value={value} />
-      {buttons.map((button) => (
+      {buttons.map((button, index) => (
         <ButtonSolid
           className={`${button.value === value ? "" : "button--inactive"}`}
           onClick={() => checkOption(button.value)}
+          key={index}
         >
           {button.text}
         </ButtonSolid>
