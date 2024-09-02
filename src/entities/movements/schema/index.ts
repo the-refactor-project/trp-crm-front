@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 export const movementSchema = z.object({
-  id: z.string(),
+  _id: z.string(),
   type: z.enum(["in", "out"]),
   description: z.string(),
   currency: z.enum(["EUR", "USD"]),

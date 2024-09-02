@@ -25,8 +25,8 @@ const MovementsTable: React.FC<MovementsTableProps> = ({ movements }) => {
       </thead>
       <tbody>
         {movements.map(
-          ({ id, date, quantity, currency, description, type }) => (
-            <tr className="datatable__row" key={id}>
+          ({ _id, date, quantity, currency, description, type }) => (
+            <tr className="datatable__row" key={_id}>
               <td className="datatable__cell datatable__cell--checkbox">
                 <input type="checkbox" />
               </td>
