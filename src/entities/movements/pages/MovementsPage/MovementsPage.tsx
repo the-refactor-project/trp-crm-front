@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAppStore from "@/store/useAppStore";
 import { useMovementsQuery } from "@movements/queries/useMovementsQuery";
@@ -7,10 +7,22 @@ import Error from "@/components/Error";
 import MovementsTable from "@movements/components/MovementsTable";
 import { getPath } from "@/router/paths";
 import ButtonSolid from "@/components/ButtonSolid";
+import { useDeleteMovement } from "../../mutations/movementsMutations";
+import { MovementStructure } from "../../schema";
+import Confirm from "@/components/Confirm";
 
 const MovementsPage: React.FC = () => {
-  const { movements, loadMovements } = useAppStore((state) => state);
+  const { movements, loadMovements, deleteMovementById } = useAppStore(
+    (state) => state,
+  );
+  const [isConfirmOpen, setIsConfirmOpen] =
+    useState<MovementStructure["_id"]>("");
   const { data, isSuccess, isLoading, isError } = useMovementsQuery(1);
+  const {
+    mutateAsync,
+    isError: isMutationError,
+    isPending,
+  } = useDeleteMovement();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -23,15 +35,40 @@ const MovementsPage: React.FC = () => {
     navigate(getPath("movements", "new"));
   };
 
+  const deleteMovement = async () => {
+    await mutateAsync(isConfirmOpen);
+
+    deleteMovementById(isConfirmOpen);
+
+    closeConfirm();
+  };
+
+  const closeConfirm = () => {
+    setIsConfirmOpen("");
+  };
+
+  const openConfirm = (movementId: MovementStructure["_id"]) => {
+    setIsConfirmOpen(movementId);
+  };
+
   return (
     <>
       <header className="section-header">
         <h1>Movimientos ({movements.length})</h1>
         <ButtonSolid onClick={navigateToNewMovementPage}>Nuevo</ButtonSolid>
       </header>
-      <MovementsTable movements={movements} />
-      {isLoading && <Loading />}
-      {isError && <Error message="No se han podido cargar los datos" />}
+      <MovementsTable movements={movements} onDeleteMovement={openConfirm} />
+      {(isLoading || isPending) && <Loading />}
+      {(isError || isMutationError) && (
+        <Error message="No se han podido cargar los datos" />
+      )}
+      {isConfirmOpen && (
+        <Confirm
+          text="¿Seguro que quieres eliminar este movimiento?"
+          onConfirm={deleteMovement}
+          onCancel={closeConfirm}
+        />
+      )}
     </>
   );
 };

@@ -1,0 +1,22 @@
+.confirm-container {
+  position: fixed;
+  inset: 0;
+  background-color: #fffd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.confirm {
+  border: 1px solid var(--accent-color);
+  width: 300px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.confirm__actions {
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,14 +1,23 @@
 import { MovementStructure } from "@movements/schema";
 import "./MovementsTable.css";
+import ButtonSolid from "../../../../components/ButtonSolid";
 
 interface MovementsTableProps {
   movements: MovementStructure[];
+  onDeleteMovement: (movementId: MovementStructure["_id"]) => void;
 }
 
-const MovementsTable: React.FC<MovementsTableProps> = ({ movements }) => {
+const MovementsTable: React.FC<MovementsTableProps> = ({
+  movements,
+  onDeleteMovement,
+}) => {
   const currencies: Record<MovementStructure["currency"], string> = {
     EUR: "€",
     USD: "$",
+  };
+
+  const deleteMovement = (movementId: MovementStructure["_id"]) => {
+    onDeleteMovement(movementId);
   };
 
   return (
@@ -21,6 +30,7 @@ const MovementsTable: React.FC<MovementsTableProps> = ({ movements }) => {
           <th className="datatable__cell datatable__cell--quantity">
             Cantidad
           </th>
+          <th className="datatable__cell datatable__cell--actions">&nbsp;</th>
         </tr>
       </thead>
       <tbody>
@@ -38,6 +48,11 @@ const MovementsTable: React.FC<MovementsTableProps> = ({ movements }) => {
                 {type === "out" && "-"}
                 {quantity}
                 {currencies[currency]}
+              </td>
+              <td className="datatable__cell datatable__cell--actions">
+                <ButtonSolid onClick={() => deleteMovement(_id)}>
+                  borrar
+                </ButtonSolid>
               </td>
             </tr>
           ),
