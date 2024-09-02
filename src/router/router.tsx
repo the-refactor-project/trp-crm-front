@@ -4,10 +4,10 @@ import {
   Navigate,
   Route,
 } from "react-router-dom";
-import App from "../components/App";
+import App from "@/components/App";
 import MovementsPage from "@movements/pages/MovementsPage";
 import NotFoundPage from "@/pages/NotFoundPage";
-import NewMovementPage from "../entities/movements/pages/NewMovementPage";
+import NewMovementPage from "@/entities/movements/pages/NewMovementPage";
 import { getPath } from "./paths";
 
 const router = createBrowserRouter(

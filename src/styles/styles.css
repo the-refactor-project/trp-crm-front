@@ -1,5 +1,6 @@
 :root {
   --accent-color: #211f1f;
+  --error-color: #ab102f;
 }
 
 *,
@@ -13,7 +14,8 @@ body {
   font-family: Nunito, sans-serif;
 }
 
-button {
+button,
+input {
   font: inherit;
   background-color: transparent;
   border: none;
