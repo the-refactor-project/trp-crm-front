@@ -27,9 +27,9 @@ const MovementsPage: React.FC = () => {
 
   useEffect(() => {
     if (isSuccess) {
-      loadMovements(data?.movements);
+      loadMovements(data);
     }
-  }, [data?.movements, isSuccess, loadMovements]);
+  }, [data, isSuccess, loadMovements]);
 
   const navigateToNewMovementPage = () => {
     navigate(getPath("movements", "new"));
@@ -59,8 +59,9 @@ const MovementsPage: React.FC = () => {
       </header>
       <MovementsTable movements={movements} onDeleteMovement={openConfirm} />
       {(isLoading || isPending) && <Loading />}
-      {(isError || isMutationError) && (
-        <Error message="No se han podido cargar los datos" />
+      {isError && <Error message="No se han podido cargar los datos" />}
+      {isMutationError && (
+        <Error message="No se ha podido eliminar el movimiento" />
       )}
       {isConfirmOpen && (
         <Confirm

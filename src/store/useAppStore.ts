@@ -5,6 +5,7 @@ interface AppStore {
   movements: MovementStructure[];
   loadMovements: (movements: MovementStructure[]) => void;
   addMovement: (newMovement: MovementStructure) => void;
+  updateMovement: (movement: MovementStructure) => void;
   deleteMovementById: (movementId: MovementStructure["_id"]) => void;
 }
 
@@ -15,6 +16,13 @@ const useAppStore = create<AppStore>((set) => ({
     set((state) => ({
       ...state,
       movements: [...state.movements, newMovement],
+    })),
+  updateMovement: (movementToUpdate: MovementStructure) =>
+    set((state) => ({
+      ...state,
+      movements: state.movements.map((movement) =>
+        movement._id === movementToUpdate._id ? movementToUpdate : movement,
+      ),
     })),
   deleteMovementById: (movementId: MovementStructure["_id"]) =>
     set((state) => ({

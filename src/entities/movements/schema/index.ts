@@ -10,7 +10,7 @@ export const movementSchema = z.object({
 });
 
 export type MovementStructure = z.infer<typeof movementSchema>;
-export type MovementDataStructure = Omit<MovementStructure, "id">;
+export type MovementDataStructure = Omit<MovementStructure, "_id">;
 export type MovementFormDataStructure = Omit<MovementDataStructure, "date"> & {
   date: string | Date;
 };

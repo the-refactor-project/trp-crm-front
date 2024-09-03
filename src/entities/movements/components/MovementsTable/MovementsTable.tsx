@@ -1,6 +1,8 @@
 import { MovementStructure } from "@movements/schema";
 import "./MovementsTable.css";
 import ButtonSolid from "../../../../components/ButtonSolid";
+import { Link } from "react-router-dom";
+import { getPath } from "../../../../router/paths";
 
 interface MovementsTableProps {
   movements: MovementStructure[];
@@ -50,6 +52,12 @@ const MovementsTable: React.FC<MovementsTableProps> = ({
                 {currencies[currency]}
               </td>
               <td className="datatable__cell datatable__cell--actions">
+                <Link
+                  to={getPath("movements", "edit", _id)}
+                  className="button button--solid"
+                >
+                  editar
+                </Link>
                 <ButtonSolid onClick={() => deleteMovement(_id)}>
                   borrar
                 </ButtonSolid>
