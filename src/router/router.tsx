@@ -8,7 +8,8 @@ import App from "@/components/App";
 import MovementsPage from "@movements/pages/MovementsPage";
 import NotFoundPage from "@/pages/NotFoundPage";
 import NewMovementPage from "@/entities/movements/pages/NewMovementPage";
-import { getPath } from "./paths";
+import { getDynamicPath, getPath } from "./paths";
+import EditMovementPage from "../entities/movements/pages/EditMovementPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -16,6 +17,10 @@ const router = createBrowserRouter(
       <Route element={<Navigate to="/movimientos" />} index />
       <Route path={getPath("movements")} element={<MovementsPage />} />
       <Route path={getPath("movements", "new")} element={<NewMovementPage />} />
+      <Route
+        path={getDynamicPath("movements", "edit", "movementId")}
+        element={<EditMovementPage />}
+      />
       <Route path="*" element={<NotFoundPage />} />
     </Route>,
   ),

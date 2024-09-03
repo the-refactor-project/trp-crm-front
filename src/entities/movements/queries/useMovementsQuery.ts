@@ -8,7 +8,11 @@ export const useMovementsQuery = (page: number) => {
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/movements?page=${page}`,
       );
-      return response.json() as Promise<{ movements: MovementStructure[] }>;
+      const body = (await response.json()) as {
+        movements: MovementStructure[];
+      };
+
+      return body.movements;
     },
     staleTime: 5000,
   });

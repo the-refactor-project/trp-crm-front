@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ButtonSolid from "../ButtonSolid";
 import MultiButton from "../MultiButton";
 import { ButtonProperties } from "../MultiButton/MultiButton";
@@ -6,10 +6,14 @@ import { MovementFormDataStructure } from "@movements/schema";
 import "./MovementForm.css";
 
 interface MovementFormProps {
+  initialValues?: MovementFormDataStructure;
   onSubmit: (formValues: MovementFormDataStructure) => void;
 }
 
-const MovementForm: React.FC<MovementFormProps> = ({ onSubmit }) => {
+const MovementForm: React.FC<MovementFormProps> = ({
+  initialValues,
+  onSubmit,
+}) => {
   const initialFormValues: MovementFormDataStructure = {
     currency: "EUR",
     description: "",
@@ -20,6 +24,15 @@ const MovementForm: React.FC<MovementFormProps> = ({ onSubmit }) => {
 
   const [formValues, setFormValues] =
     useState<MovementFormDataStructure>(initialFormValues);
+
+  useEffect(() => {
+    if (initialValues) {
+      setFormValues({
+        ...initialValues,
+        date: initialValues.date.toString().split("T")[0],
+      });
+    }
+  }, [initialValues]);
 
   const changeFormValues = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormValues((currentFormValues) => ({
@@ -121,7 +134,9 @@ const MovementForm: React.FC<MovementFormProps> = ({ onSubmit }) => {
         </div>
       </div>
       <div className="form__group">
-        <ButtonSolid type="submit">Crear</ButtonSolid>
+        <ButtonSolid type="submit">
+          {initialValues ? "Modificar" : "Crear"}
+        </ButtonSolid>
       </div>
     </form>
   );

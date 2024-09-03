@@ -26,3 +26,17 @@ export const getPath = (
 
   return path;
 };
+
+export const getDynamicPath = (
+  base: BasePath,
+  child?: keyof (typeof paths)[BasePath],
+  parameter?: string,
+): string => {
+  let path = getPath(base, child);
+
+  if (parameter) {
+    path += `/:${parameter}`;
+  }
+
+  return path;
+};
