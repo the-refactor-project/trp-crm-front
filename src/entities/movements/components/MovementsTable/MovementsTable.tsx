@@ -1,8 +1,8 @@
 import { MovementStructure } from "@movements/schema";
-import "./MovementsTable.css";
 import ButtonSolid from "../../../../components/ButtonSolid";
 import { Link } from "react-router-dom";
 import { getPath } from "../../../../router/paths";
+import "./MovementsTable.css";
 
 interface MovementsTableProps {
   movements: MovementStructure[];
@@ -37,7 +37,7 @@ const MovementsTable: React.FC<MovementsTableProps> = ({
       </thead>
       <tbody>
         {movements.map(
-          ({ _id, date, quantity, currency, description, type }) => (
+          ({ _id, date, quantity, currency, description, type, isCard }) => (
             <tr className="datatable__row" key={_id}>
               <td className="datatable__cell datatable__cell--checkbox">
                 <input type="checkbox" />
@@ -45,7 +45,18 @@ const MovementsTable: React.FC<MovementsTableProps> = ({
               <td className="datatable__cell datatable__cell--date">
                 {new Date(date).toLocaleDateString()}
               </td>
-              <td className="datatable__cell">{description}</td>
+              <td className="datatable__cell">
+                {description}
+                {isCard && (
+                  <img
+                    className="datatable__icon"
+                    src="/icons/card.svg"
+                    alt="Bank card"
+                    title="Con tarjeta"
+                    width={20}
+                  />
+                )}
+              </td>
               <td className="datatable__cell datatable__cell--quantity">
                 {type === "out" && "-"}
                 {quantity}

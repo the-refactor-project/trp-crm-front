@@ -9,17 +9,19 @@ import Loading from "@/components/Loading";
 import { getPath } from "@/router/paths";
 import { useMovementQuery } from "@movements/queries/useMovementQuery";
 import Error from "@/components/Error";
+import useAppStore from "../../../../store/useAppStore";
 
 const EditMovementPage: React.FC = () => {
+  const { updateMovement } = useAppStore();
   const { movementId } = useParams<{ movementId: string }>();
   const { data, isLoading, isError } = useMovementQuery(movementId!);
   const { mutateAsync, isPending } = useUpdateMovementMutation();
   const navigate = useNavigate();
 
-  const updateMovement = async (movement: MovementStructure) => {
+  const onUpdateMovement = async (movement: MovementStructure) => {
     await mutateAsync(movement);
 
-    // addMovement(updateMovement);
+    updateMovement(movement);
 
     navigate(getPath("movements"));
   };
@@ -29,7 +31,7 @@ const EditMovementPage: React.FC = () => {
       <h1>Editar movimiento</h1>
       <MovementForm
         onSubmit={(formValues) =>
-          updateMovement(formValues as MovementStructure)
+          onUpdateMovement(formValues as MovementStructure)
         }
         initialValues={data as MovementFormDataStructure}
       />

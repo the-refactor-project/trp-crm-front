@@ -40,3 +40,7 @@
     text-decoration: none;
   }
 }
+
+.datatable__icon {
+  margin-left: 5px;
+}
