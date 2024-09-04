@@ -19,6 +19,7 @@ const MovementForm: React.FC<MovementFormProps> = ({
     description: "",
     quantity: 0,
     type: "out",
+    isCard: false,
     date: "",
   };
 
@@ -37,7 +38,10 @@ const MovementForm: React.FC<MovementFormProps> = ({
   const changeFormValues = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormValues((currentFormValues) => ({
       ...currentFormValues,
-      [event.target.id]: event.target.value,
+      [event.target.id]:
+        event.target.type === "checkbox"
+          ? event.target.checked
+          : event.target.value,
     }));
   };
 
@@ -86,6 +90,20 @@ const MovementForm: React.FC<MovementFormProps> = ({
           Introduce un tipo de movimiento correcto
         </span>
       </div>
+      {formValues.type === "out" && (
+        <div className="form__group form__group--inline">
+          <input
+            type="checkbox"
+            className="form__control"
+            id="isCard"
+            checked={formValues.isCard}
+            onChange={changeFormValues}
+          />
+          <label htmlFor="isCard" className="form__label">
+            Tarjeta
+          </label>
+        </div>
+      )}
       <div className="form__group">
         <label htmlFor="date" className="form__label">
           Fecha:

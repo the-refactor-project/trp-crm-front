@@ -6,6 +6,7 @@ export const movementSchema = z.object({
   description: z.string(),
   currency: z.enum(["EUR", "USD"]),
   quantity: z.number(),
+  isCard: z.boolean(),
   date: z.date(),
 });
 
