@@ -17,6 +17,17 @@ const Navigation: React.FC = () => {
             Movimientos
           </NavLink>
         </li>
+        <li>
+          <NavLink
+            to={getPath("leads")}
+            className={({ isActive }) =>
+              `main-navigation__link${isActive ? " main-navigation__link--active" : ""}`
+            }
+            end
+          >
+            Leads
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );

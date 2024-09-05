@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import MovementForm from "@/components/MovementForm";
+import MovementForm from "@/entities/movements/components/MovementForm";
 import { MovementFormDataStructure } from "@movements/schema";
 import { useAddMovementMutation } from "@movements/mutations/movementsMutations";
 import useAppStore from "@/store/useAppStore";

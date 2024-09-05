@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import ButtonSolid from "../ButtonSolid";
-import MultiButton from "../MultiButton";
-import { ButtonProperties } from "../MultiButton/MultiButton";
+import ButtonSolid from "../../../../components/ButtonSolid";
+import MultiButton from "../../../../components/MultiButton";
+import { ButtonProperties } from "../../../../components/MultiButton/MultiButton";
 import { MovementFormDataStructure } from "@movements/schema";
 import "./MovementForm.css";
 
