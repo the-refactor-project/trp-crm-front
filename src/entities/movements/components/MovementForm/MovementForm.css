@@ -1,0 +1,43 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.form__group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form__group--inline,
+.form__field--inline {
+  flex-direction: row;
+  align-items: center;
+}
+
+.form__control {
+  border: 1px solid var(--accent-color);
+  padding: 5px 10px;
+}
+
+.form__control--mini {
+  width: 100px;
+}
+
+.form__inline-groups {
+  display: flex;
+  gap: 20px;
+}
+
+.form__error {
+  color: #f00;
+  font-size: 0.9rem;
+  height: 20px;
+  visibility: hidden;
+}
+
+.form__error--visible {
+  visibility: visible;
+}

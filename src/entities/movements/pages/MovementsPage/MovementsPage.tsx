@@ -12,12 +12,14 @@ import { MovementStructure } from "../../schema";
 import Confirm from "@/components/Confirm";
 
 const MovementsPage: React.FC = () => {
-  const { movements, loadMovements, deleteMovementById } = useAppStore(
-    (state) => state,
-  );
+  const {
+    leads: movements,
+    loadMovements,
+    deleteLeadById: deleteMovementById,
+  } = useAppStore((state) => state);
   const [isConfirmOpen, setIsConfirmOpen] =
     useState<MovementStructure["_id"]>("");
-  const { data, isSuccess, isLoading, isError } = useMovementsQuery(1);
+  const { data, isSuccess, isLoading, isError } = useMovementsQuery();
   const {
     mutateAsync,
     isError: isMutationError,

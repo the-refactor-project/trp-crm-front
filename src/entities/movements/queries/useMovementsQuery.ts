@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { MovementStructure } from "../schema";
 
-export const useMovementsQuery = (page: number) => {
+export const useMovementsQuery = (page = 1) => {
   return useQuery({
     queryKey: ["movements", page],
     queryFn: async () => {

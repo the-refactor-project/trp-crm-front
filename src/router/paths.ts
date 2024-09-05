@@ -1,9 +1,14 @@
-type BasePath = "movements";
+type BasePath = "movements" | "leads";
 type Paths = Record<BasePath, Record<"root", string> & Record<string, string>>;
 
 const paths: Paths = {
   movements: {
     root: "movimientos",
+    new: "crear",
+    edit: "modificar",
+  },
+  leads: {
+    root: "leads",
     new: "crear",
     edit: "modificar",
   },

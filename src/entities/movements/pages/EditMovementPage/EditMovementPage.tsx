@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
-import MovementForm from "@/components/MovementForm";
+import MovementForm from "@/entities/movements/components/MovementForm";
 import {
   MovementFormDataStructure,
   MovementStructure,
@@ -12,7 +12,7 @@ import Error from "@/components/Error";
 import useAppStore from "../../../../store/useAppStore";
 
 const EditMovementPage: React.FC = () => {
-  const { updateMovement } = useAppStore();
+  const { updateLead: updateMovement } = useAppStore();
   const { movementId } = useParams<{ movementId: string }>();
   const { data, isLoading, isError } = useMovementQuery(movementId!);
   const { mutateAsync, isPending } = useUpdateMovementMutation();
