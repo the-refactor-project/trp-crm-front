@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { LeadStructure } from "../entities/leads/schema";
 import { MovementStructure } from "../entities/movements/schema";
+import { ProviderStructure } from "../entities/providers/schema";
 
 interface AppStore {
   movements: MovementStructure[];
@@ -13,6 +14,11 @@ interface AppStore {
   addLead: (newLead: LeadStructure) => void;
   updateLead: (lead: LeadStructure) => void;
   deleteLeadById: (leadId: LeadStructure["_id"]) => void;
+  providers: ProviderStructure[];
+  loadProviders: (providers: ProviderStructure[]) => void;
+  addProvider: (newProvider: ProviderStructure) => void;
+  updateProvider: (provider: ProviderStructure) => void;
+  deleteProviderById: (providerId: ProviderStructure["_id"]) => void;
 }
 
 const useAppStore = create<AppStore>((set) => ({
@@ -55,6 +61,27 @@ const useAppStore = create<AppStore>((set) => ({
     set((state) => ({
       ...state,
       leads: state.leads.filter((lead) => lead._id !== leadId),
+    })),
+  providers: [],
+  loadProviders: (providers: ProviderStructure[]) => set({ providers }),
+  addProvider: (newProvider: ProviderStructure) =>
+    set((state) => ({
+      ...state,
+      providers: [...state.providers, newProvider],
+    })),
+  updateProvider: (providerToUpdate: ProviderStructure) =>
+    set((state) => ({
+      ...state,
+      providers: state.providers.map((provider) =>
+        provider._id === providerToUpdate._id ? providerToUpdate : provider,
+      ),
+    })),
+  deleteProviderById: (providerId: ProviderStructure["_id"]) =>
+    set((state) => ({
+      ...state,
+      providers: state.providers.filter(
+        (provider) => provider._id !== providerId,
+      ),
     })),
 }));
 

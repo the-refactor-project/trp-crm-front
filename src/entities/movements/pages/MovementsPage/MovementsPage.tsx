@@ -7,16 +7,14 @@ import Error from "@/components/Error";
 import MovementsTable from "@movements/components/MovementsTable";
 import { getPath } from "@/router/paths";
 import ButtonSolid from "@/components/ButtonSolid";
-import { useDeleteMovement } from "../../mutations/movementsMutations";
+import { useDeleteMovementMutation } from "../../mutations/movementsMutations";
 import { MovementStructure } from "../../schema";
 import Confirm from "@/components/Confirm";
 
 const MovementsPage: React.FC = () => {
-  const {
-    leads: movements,
-    loadMovements,
-    deleteLeadById: deleteMovementById,
-  } = useAppStore((state) => state);
+  const { movements, loadMovements, deleteMovementById } = useAppStore(
+    (state) => state,
+  );
   const [isConfirmOpen, setIsConfirmOpen] =
     useState<MovementStructure["_id"]>("");
   const { data, isSuccess, isLoading, isError } = useMovementsQuery();
@@ -24,7 +22,7 @@ const MovementsPage: React.FC = () => {
     mutateAsync,
     isError: isMutationError,
     isPending,
-  } = useDeleteMovement();
+  } = useDeleteMovementMutation();
   const navigate = useNavigate();
 
   useEffect(() => {

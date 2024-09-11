@@ -13,6 +13,9 @@ import EditMovementPage from "../entities/movements/pages/EditMovementPage";
 import LeadsPage from "../entities/leads/pages/LeadsPage";
 import NewLeadPage from "../entities/leads/pages/NewLeadPage";
 import EditLeadPage from "../entities/leads/pages/EditLeadPage";
+import ProvidersPage from "../entities/providers/pages/ProvidersPage";
+import NewProviderPage from "../entities/providers/pages/NewProviderPage";
+import EditProviderPage from "../entities/providers/pages/EditProviderPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -29,6 +32,12 @@ const router = createBrowserRouter(
       <Route
         path={getDynamicPath("leads", "edit", "leadId")}
         element={<EditLeadPage />}
+      />
+      <Route path={getPath("providers")} element={<ProvidersPage />} />
+      <Route path={getPath("providers", "new")} element={<NewProviderPage />} />
+      <Route
+        path={getDynamicPath("providers", "edit", "providerId")}
+        element={<EditProviderPage />}
       />
       <Route path="*" element={<NotFoundPage />} />
     </Route>,

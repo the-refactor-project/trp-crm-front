@@ -9,17 +9,17 @@ import { LeadStructure } from "../../schema";
 import { useLeadsQuery } from "../../queries/useLeadsQuery";
 import Confirm from "../../../../components/Confirm";
 import LeadsTable from "../../components/LeadsTable";
-import { useDeleteLead } from "../../mutations/leadsMutations";
+import { useDeleteLeadMutation } from "../../mutations/leadsMutations";
 
 const LeadsPage: React.FC = () => {
-  const {
-    leads,
-    loadLeads,
-    deleteLeadById: deleteMovementById,
-  } = useAppStore((state) => state);
+  const { leads, loadLeads, deleteLeadById } = useAppStore((state) => state);
   const [isConfirmOpen, setIsConfirmOpen] = useState<LeadStructure["_id"]>("");
   const { data, isSuccess, isLoading, isError } = useLeadsQuery();
-  const { mutateAsync, isError: isMutationError, isPending } = useDeleteLead();
+  const {
+    mutateAsync,
+    isError: isMutationError,
+    isPending,
+  } = useDeleteLeadMutation();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const LeadsPage: React.FC = () => {
   const deleteLead = async () => {
     await mutateAsync(isConfirmOpen);
 
-    deleteMovementById(isConfirmOpen);
+    deleteLeadById(isConfirmOpen);
 
     closeConfirm();
   };

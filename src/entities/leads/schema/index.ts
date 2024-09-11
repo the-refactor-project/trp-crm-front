@@ -26,6 +26,10 @@ export const leadSchema = z.object({
 
 export type LeadStructure = z.infer<typeof leadSchema>;
 export type LeadDataStructure = Omit<LeadStructure, "_id">;
-export type LeadFormDataStructure = Omit<LeadDataStructure, "entryDate"> & {
-  entryDate: string | Date;
-};
+export type LeadFormDataStructure = Omit<
+  LeadDataStructure,
+  "entryDate" | "address"
+> &
+  z.infer<typeof addressSchema> & {
+    entryDate: string | Date;
+  };

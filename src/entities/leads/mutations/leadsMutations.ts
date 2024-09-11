@@ -49,7 +49,7 @@ export const useUpdateLeadMutation = () => {
   });
 };
 
-export const useDeleteLead = () => {
+export const useDeleteLeadMutation = () => {
   return useMutation({
     mutationFn: async (leadId: LeadStructure["_id"]) => {
       const response = await fetch(
