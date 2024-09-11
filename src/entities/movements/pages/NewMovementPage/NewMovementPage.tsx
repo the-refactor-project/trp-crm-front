@@ -5,8 +5,10 @@ import { useAddMovementMutation } from "@movements/mutations/movementsMutations"
 import useAppStore from "@/store/useAppStore";
 import Loading from "@/components/Loading";
 import { getPath } from "../../../../router/paths";
+import useTitle from "../../../../hooks/useTitle";
 
 const NewMovementPage: React.FC = () => {
+  useTitle("Crear movimiento");
   const { addMovement } = useAppStore((state) => state);
   const { mutateAsync, isPending } = useAddMovementMutation();
   const navigate = useNavigate();

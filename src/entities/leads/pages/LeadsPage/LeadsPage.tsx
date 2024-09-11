@@ -10,8 +10,10 @@ import { useLeadsQuery } from "../../queries/useLeadsQuery";
 import Confirm from "../../../../components/Confirm";
 import LeadsTable from "../../components/LeadsTable";
 import { useDeleteLeadMutation } from "../../mutations/leadsMutations";
+import useTitle from "../../../../hooks/useTitle";
 
 const LeadsPage: React.FC = () => {
+  useTitle("Leads");
   const { leads, loadLeads, deleteLeadById } = useAppStore((state) => state);
   const [isConfirmOpen, setIsConfirmOpen] = useState<LeadStructure["_id"]>("");
   const { data, isSuccess, isLoading, isError } = useLeadsQuery();

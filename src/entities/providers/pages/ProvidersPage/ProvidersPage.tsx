@@ -10,6 +10,7 @@ import { useProvidersQuery } from "../../queries/useProvidersQuery";
 import Confirm from "../../../../components/Confirm";
 import ProvidersTable from "../../components/ProvidersTable";
 import { useDeleteProviderMutation } from "../../mutations/providersMutations";
+import useTitle from "../../../../hooks/useTitle";
 
 const ProvidersPage: React.FC = () => {
   const { providers, loadProviders, deleteProviderById } = useAppStore(
@@ -23,6 +24,8 @@ const ProvidersPage: React.FC = () => {
     isError: isMutationError,
     isPending,
   } = useDeleteProviderMutation();
+  useTitle("Proveedores");
+
   const navigate = useNavigate();
 
   useEffect(() => {
