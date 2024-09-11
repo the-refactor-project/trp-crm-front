@@ -5,8 +5,10 @@ import { getPath } from "../../../../router/paths";
 import ProviderForm from "../../components/ProviderForm";
 import { useAddProviderMutation } from "../../mutations/providersMutations";
 import { ProviderFormDataStructure } from "../../schema";
+import useTitle from "../../../../hooks/useTitle";
 
 const NewProviderPage: React.FC = () => {
+  useTitle("Crear proveedor");
   const { addProvider } = useAppStore((state) => state);
   const { mutateAsync, isPending } = useAddProviderMutation();
   const navigate = useNavigate();

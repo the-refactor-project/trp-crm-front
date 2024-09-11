@@ -7,8 +7,10 @@ import { useLeadQuery } from "../../queries/useLeadQuery";
 import { useUpdateLeadMutation } from "../../mutations/leadsMutations";
 import { LeadFormDataStructure, LeadStructure } from "../../schema";
 import LeadForm from "../../components/LeadForm";
+import useTitle from "../../../../hooks/useTitle";
 
 const EditLeadPage: React.FC = () => {
+  useTitle("Editar lead");
   const { updateLead } = useAppStore();
   const { leadId } = useParams<{ leadId: string }>();
   const { data, isLoading, isError } = useLeadQuery(leadId!);

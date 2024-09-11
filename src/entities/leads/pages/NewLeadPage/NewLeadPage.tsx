@@ -5,8 +5,10 @@ import { getPath } from "../../../../router/paths";
 import { LeadFormDataStructure } from "../../schema";
 import LeadForm from "../../components/LeadForm";
 import { useAddLeadMutation } from "../../mutations/leadsMutations";
+import useTitle from "../../../../hooks/useTitle";
 
 const NewLeadPage: React.FC = () => {
+  useTitle("Crear lead");
   const { addLead } = useAppStore((state) => state);
   const { mutateAsync, isPending } = useAddLeadMutation();
   const navigate = useNavigate();

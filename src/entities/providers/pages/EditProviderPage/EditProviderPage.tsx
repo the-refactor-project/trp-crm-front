@@ -7,8 +7,10 @@ import { useProviderQuery } from "../../queries/useProviderQuery";
 import { useUpdateProviderMutation } from "../../mutations/providersMutations";
 import { ProviderFormDataStructure } from "../../schema";
 import ProviderForm from "../../components/ProviderForm";
+import useTitle from "../../../../hooks/useTitle";
 
 const EditProviderPage: React.FC = () => {
+  useTitle("Editar proveedor");
   const { updateProvider } = useAppStore();
   const { providerId } = useParams<{ providerId: string }>();
   const { data, isLoading, isError } = useProviderQuery(providerId!);

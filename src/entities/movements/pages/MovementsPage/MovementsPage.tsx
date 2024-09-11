@@ -10,8 +10,10 @@ import ButtonSolid from "@/components/ButtonSolid";
 import { useDeleteMovementMutation } from "../../mutations/movementsMutations";
 import { MovementStructure } from "../../schema";
 import Confirm from "@/components/Confirm";
+import useTitle from "../../../../hooks/useTitle";
 
 const MovementsPage: React.FC = () => {
+  useTitle("Movimientos");
   const { movements, loadMovements, deleteMovementById } = useAppStore(
     (state) => state,
   );

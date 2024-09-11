@@ -10,8 +10,10 @@ import { getPath } from "@/router/paths";
 import { useMovementQuery } from "@movements/queries/useMovementQuery";
 import Error from "@/components/Error";
 import useAppStore from "../../../../store/useAppStore";
+import useTitle from "../../../../hooks/useTitle";
 
 const EditMovementPage: React.FC = () => {
+  useTitle("Editar movimiento");
   const { updateLead: updateMovement } = useAppStore();
   const { movementId } = useParams<{ movementId: string }>();
   const { data, isLoading, isError } = useMovementQuery(movementId!);
