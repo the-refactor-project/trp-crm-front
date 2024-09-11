@@ -28,6 +28,17 @@ const Navigation: React.FC = () => {
             Leads
           </NavLink>
         </li>
+        <li>
+          <NavLink
+            to={getPath("providers")}
+            className={({ isActive }) =>
+              `main-navigation__link${isActive ? " main-navigation__link--active" : ""}`
+            }
+            end
+          >
+            Proveedores
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );

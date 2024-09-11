@@ -1,4 +1,4 @@
-type BasePath = "movements" | "leads";
+type BasePath = "movements" | "leads" | "providers";
 type Paths = Record<BasePath, Record<"root", string> & Record<string, string>>;
 
 const paths: Paths = {
@@ -9,6 +9,11 @@ const paths: Paths = {
   },
   leads: {
     root: "leads",
+    new: "crear",
+    edit: "modificar",
+  },
+  providers: {
+    root: "proveedores",
     new: "crear",
     edit: "modificar",
   },

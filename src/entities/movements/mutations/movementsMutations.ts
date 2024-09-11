@@ -55,7 +55,7 @@ export const useUpdateMovementMutation = () => {
   });
 };
 
-export const useDeleteMovement = () => {
+export const useDeleteMovementMutation = () => {
   return useMutation({
     mutationFn: async (movementId: MovementStructure["_id"]) => {
       const response = await fetch(

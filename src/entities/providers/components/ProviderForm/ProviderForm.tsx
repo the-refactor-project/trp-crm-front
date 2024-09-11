@@ -1,48 +1,54 @@
 import { useEffect, useState } from "react";
 import ButtonSolid from "../../../../components/ButtonSolid";
-import { LeadFormDataStructure } from "../../schema";
-import "./LeadForm.css";
+import { ProviderFormDataStructure, ProviderStructure } from "../../schema";
+import "./ProviderForm.css";
 
 interface LeadFormProps {
-  initialValues?: LeadFormDataStructure;
-  onSubmit: (formValues: LeadFormDataStructure) => void;
+  initialValues?: ProviderStructure;
+  onSubmit: (formValues: ProviderFormDataStructure) => void;
 }
 
 const LeadForm: React.FC<LeadFormProps> = ({ initialValues, onSubmit }) => {
-  const initialFormValues: LeadFormDataStructure = {
+  const initialFormValues: ProviderFormDataStructure = {
+    _id: "",
     name: "",
-    lastName: "",
+    commercialName: "",
     address: "",
     city: "",
     country: "",
     locality: "",
     zip: "",
-    askedFor: "",
-    channel: "",
     email: "",
-    formComments: "",
     nif: "",
-    origin: "",
+    vat: "",
+    currency: "EUR",
     phoneNumber: "",
-    referralOf: "",
-    entryDate: "",
   };
 
   const [formValues, setFormValues] =
-    useState<LeadFormDataStructure>(initialFormValues);
+    useState<ProviderFormDataStructure>(initialFormValues);
 
   useEffect(() => {
     if (initialValues) {
       setFormValues({
-        ...initialValues,
-        entryDate: initialValues.entryDate.toString().split("T")[0],
+        _id: initialValues._id,
+        name: initialValues.name,
+        commercialName: initialValues.commercialName,
+        nif: initialValues.nif,
+        vat: initialValues.vat,
+        email: initialValues.email,
+        currency: initialValues.currency,
+        phoneNumber: initialValues.phoneNumber,
+        address: initialValues.address?.address,
+        locality: initialValues.address?.locality,
+        city: initialValues.address?.city,
+        country: initialValues.address?.country,
+        zip: initialValues.address?.zip,
       });
     }
   }, [initialValues]);
 
-  const changeFormValues = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
+  const changeFormValues = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormValues((currentFormValues) => ({
       ...currentFormValues,
       [event.target.id]: event.target.value,
@@ -51,25 +57,12 @@ const LeadForm: React.FC<LeadFormProps> = ({ initialValues, onSubmit }) => {
 
   const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    formValues.entryDate = new Date(formValues.entryDate);
 
     onSubmit(formValues);
   };
 
   return (
     <form className="form" onSubmit={submitForm}>
-      <div className="form__group">
-        <label htmlFor="entryDate" className="form__label">
-          Fecha:
-        </label>
-        <input
-          type="date"
-          className="form__control"
-          id="entryDate"
-          value={formValues.entryDate.toString()}
-          onChange={changeFormValues}
-        />
-      </div>
       <div className="form__group">
         <label htmlFor="name" className="form__label">
           Nombre:
@@ -83,14 +76,14 @@ const LeadForm: React.FC<LeadFormProps> = ({ initialValues, onSubmit }) => {
         />
       </div>
       <div className="form__group">
-        <label htmlFor="lastName" className="form__label">
-          Apellidos:
+        <label htmlFor="commercialName" className="form__label">
+          Nombre comercial:
         </label>
         <input
           type="text"
           className="form__control"
-          id="lastName"
-          value={formValues.lastName}
+          id="commercialName"
+          value={formValues.commercialName}
           onChange={changeFormValues}
         />
       </div>
@@ -131,61 +124,14 @@ const LeadForm: React.FC<LeadFormProps> = ({ initialValues, onSubmit }) => {
         />
       </div>
       <div className="form__group">
-        <label htmlFor="formComments" className="form__label">
-          Comentarios del formulario:
-        </label>
-        <textarea
-          className="form__control"
-          id="formComments"
-          value={formValues.formComments}
-          onChange={changeFormValues}
-        />
-      </div>
-      <div className="form__group">
-        <label htmlFor="channel" className="form__label">
-          Canal:
+        <label htmlFor="vat" className="form__label">
+          VAT:
         </label>
         <input
           type="text"
           className="form__control"
-          id="channel"
-          value={formValues.channel}
-          onChange={changeFormValues}
-        />
-      </div>
-      <div className="form__group">
-        <label htmlFor="origin" className="form__label">
-          Origen:
-        </label>
-        <input
-          type="text"
-          className="form__control"
-          id="origin"
-          value={formValues.origin}
-          onChange={changeFormValues}
-        />
-      </div>
-      <div className="form__group">
-        <label htmlFor="askedFor" className="form__label">
-          Preguntó por:
-        </label>
-        <input
-          type="text"
-          className="form__control"
-          id="askedFor"
-          value={formValues.askedFor}
-          onChange={changeFormValues}
-        />
-      </div>
-      <div className="form__group">
-        <label htmlFor="referralOf" className="form__label">
-          Referido de:
-        </label>
-        <input
-          type="text"
-          className="form__control"
-          id="referralOf"
-          value={formValues.referralOf}
+          id="vat"
+          value={formValues.vat}
           onChange={changeFormValues}
         />
       </div>
