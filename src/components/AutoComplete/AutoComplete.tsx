@@ -1,10 +1,9 @@
-import { useQuery } from "@tanstack/react-query";
 import { ComponentProps, useEffect, useRef, useState } from "react";
 import ButtonOutline from "../ButtonOutline";
+import useAutoCompleteQuery from "./useAutoCompleteQuery";
 import "./AutoComplete.css";
 
 interface AutoCompleteProps<Entity extends { _id: string }> {
-  entitySingular: string;
   entityPlural: string;
   fieldToShow: keyof Entity;
   onComplete: (entity: Entity | null) => void;
@@ -23,20 +22,7 @@ const AutoComplete = <Entity extends { _id: string }>({
 
   const timer = useRef<number>();
 
-  const { data } = useQuery<Entity[]>({
-    queryKey: [`${entityPlural}SearchResults`, search],
-    queryFn: async () => {
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/${entityPlural}/search/${search}`,
-      );
-
-      const body = await response.json();
-
-      return body[entityPlural];
-    },
-    staleTime: 30000,
-    enabled: search.length >= 3,
-  });
+  const { data } = useAutoCompleteQuery<Entity>(search, entityPlural);
 
   const triggerSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     timer.current = window.setTimeout(() => {

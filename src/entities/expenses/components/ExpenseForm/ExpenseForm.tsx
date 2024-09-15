@@ -151,7 +151,6 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({
         </label>
         <AutoComplete
           id="providerId"
-          entitySingular="provider"
           entityPlural="providers"
           fieldToShow="commercialName"
           onComplete={onSelectProvider}
@@ -163,7 +162,6 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({
         </label>
         <AutoComplete
           id="movementId"
-          entitySingular="movement"
           entityPlural="movements"
           fieldToShow="description"
           onComplete={onSelectMovement}
