@@ -3,9 +3,10 @@ import ButtonSolid from "../../../../components/ButtonSolid";
 import MultiButton from "../../../../components/MultiButton";
 import { ButtonProperties } from "../../../../components/MultiButton/MultiButton";
 import { ExpenseFormDataStructure } from "../../schema";
-import AutoComplete from "../AutoComplete";
-import "./ExpenseForm.css";
 import { ProviderStructure } from "../../../providers/schema";
+import AutoComplete from "../../../../components/AutoComplete";
+import "./ExpenseForm.css";
+import { MovementStructure } from "../../../movements/schema";
 
 interface ExpenseFormProps {
   initialValues?: ExpenseFormDataStructure;
@@ -59,10 +60,17 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({
     },
   ];
 
-  const onAutoCompleteSelect = (provider: ProviderStructure | null) => {
+  const onSelectProvider = (provider: ProviderStructure | null) => {
     setFormValues((currentFormValues) => ({
       ...currentFormValues,
       providerId: provider ? provider._id : "",
+    }));
+  };
+
+  const onSelectMovement = (movement: MovementStructure | null) => {
+    setFormValues((currentFormValues) => ({
+      ...currentFormValues,
+      movementId: movement ? movement._id : "",
     }));
   };
 
@@ -138,10 +146,28 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({
         </div>
       </div>
       <div className="form__group">
-        <label htmlFor="provider" className="form__label">
-          Proveedor
+        <label htmlFor="providerId" className="form__label">
+          Proveedor:
         </label>
-        <AutoComplete onComplete={onAutoCompleteSelect} />
+        <AutoComplete
+          id="providerId"
+          entitySingular="provider"
+          entityPlural="providers"
+          fieldToShow="commercialName"
+          onComplete={onSelectProvider}
+        />
+      </div>
+      <div className="form__group">
+        <label htmlFor="movementId" className="form__label">
+          Movimiento:
+        </label>
+        <AutoComplete
+          id="movementId"
+          entitySingular="movement"
+          entityPlural="movements"
+          fieldToShow="description"
+          onComplete={onSelectMovement}
+        />
       </div>
       <div className="form__group">
         <ButtonSolid type="submit">
