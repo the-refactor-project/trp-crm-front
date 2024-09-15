@@ -19,6 +19,17 @@ const Navigation: React.FC = () => {
         </li>
         <li>
           <NavLink
+            to={getPath("expenses")}
+            className={({ isActive }) =>
+              `main-navigation__link${isActive ? " main-navigation__link--active" : ""}`
+            }
+            end
+          >
+            Gastos
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
             to={getPath("leads")}
             className={({ isActive }) =>
               `main-navigation__link${isActive ? " main-navigation__link--active" : ""}`

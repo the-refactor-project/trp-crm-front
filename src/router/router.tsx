@@ -17,6 +17,7 @@ import ProvidersPage from "../entities/providers/pages/ProvidersPage";
 import NewProviderPage from "../entities/providers/pages/NewProviderPage";
 import EditProviderPage from "../entities/providers/pages/EditProviderPage";
 import NewExpensePage from "../entities/expenses/pages/NewExpensePage";
+import ExpensesPage from "../entities/expenses/pages/ExpensesPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -40,6 +41,7 @@ const router = createBrowserRouter(
         path={getDynamicPath("providers", "edit", "providerId")}
         element={<EditProviderPage />}
       />
+      <Route path={getPath("expenses")} element={<ExpensesPage />} />
       <Route path={getPath("expenses", "new")} element={<NewExpensePage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Route>,

@@ -50,21 +50,21 @@ export const useAddExpenseMutation = () => {
       return updatedMovement;
     },
   });
-};
+}; */
 
-export const useDeleteMovementMutation = () => {
+export const useDeleteExpenseMutation = () => {
   return useMutation({
-    mutationFn: async (movementId: MovementStructure["_id"]) => {
+    mutationFn: async (expenseId: ExpenseStructure["_id"]) => {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/movements/${movementId}`,
+        `${import.meta.env.VITE_API_URL}/expenses/${expenseId}`,
         {
           method: "DELETE",
         },
       );
 
       if (!response.ok) {
-        throw new Error("Error al eliminar el movimiento");
+        throw new Error("Error al eliminar el gasto");
       }
     },
   });
-}; */
+};

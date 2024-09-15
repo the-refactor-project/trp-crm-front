@@ -21,7 +21,9 @@ interface AppStore {
   updateProvider: (provider: ProviderStructure) => void;
   deleteProviderById: (providerId: ProviderStructure["_id"]) => void;
   expenses: ExpenseStructure[];
+  loadExpenses: (expenses: ExpenseStructure[]) => void;
   addExpense: (newExpense: ExpenseStructure) => void;
+  deleteExpenseById: (expenseId: ExpenseStructure["_id"]) => void;
 }
 
 const useAppStore = create<AppStore>((set) => ({
@@ -87,10 +89,16 @@ const useAppStore = create<AppStore>((set) => ({
       ),
     })),
   expenses: [],
+  loadExpenses: (expenses: ExpenseStructure[]) => set({ expenses }),
   addExpense: (newExpense: ExpenseStructure) =>
     set((state) => ({
       ...state,
       expenses: [...state.expenses, newExpense],
+    })),
+  deleteExpenseById: (expenseId: ExpenseStructure["_id"]) =>
+    set((state) => ({
+      ...state,
+      expenses: state.expenses.filter((expense) => expense._id !== expenseId),
     })),
 }));
 
