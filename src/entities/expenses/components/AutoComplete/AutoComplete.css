@@ -1,0 +1,10 @@
+.autocomplete__results {
+  border: 1px solid #000;
+  padding: 5px 10px;
+}
+
+.autocomplete__selected-result {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}

@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { LeadStructure } from "../entities/leads/schema";
 import { MovementStructure } from "../entities/movements/schema";
 import { ProviderStructure } from "../entities/providers/schema";
+import { ExpenseStructure } from "../entities/expenses/schema";
 
 interface AppStore {
   movements: MovementStructure[];
@@ -19,6 +20,8 @@ interface AppStore {
   addProvider: (newProvider: ProviderStructure) => void;
   updateProvider: (provider: ProviderStructure) => void;
   deleteProviderById: (providerId: ProviderStructure["_id"]) => void;
+  expenses: ExpenseStructure[];
+  addExpense: (newExpense: ExpenseStructure) => void;
 }
 
 const useAppStore = create<AppStore>((set) => ({
@@ -82,6 +85,12 @@ const useAppStore = create<AppStore>((set) => ({
       providers: state.providers.filter(
         (provider) => provider._id !== providerId,
       ),
+    })),
+  expenses: [],
+  addExpense: (newExpense: ExpenseStructure) =>
+    set((state) => ({
+      ...state,
+      expenses: [...state.expenses, newExpense],
     })),
 }));
 

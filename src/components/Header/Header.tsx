@@ -16,7 +16,9 @@ const Header: React.FC = () => {
               height={30}
             />
           </Link>
-          <span className="main-header__title">Dinereitor</span>
+          <Link to="/">
+            <span className="main-header__title">Dinereitor</span>
+          </Link>
         </div>
         <Navigation />
       </div>

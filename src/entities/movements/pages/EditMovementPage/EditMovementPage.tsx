@@ -14,7 +14,7 @@ import useTitle from "../../../../hooks/useTitle";
 
 const EditMovementPage: React.FC = () => {
   useTitle("Editar movimiento");
-  const { updateLead: updateMovement } = useAppStore();
+  const { updateMovement } = useAppStore();
   const { movementId } = useParams<{ movementId: string }>();
   const { data, isLoading, isError } = useMovementQuery(movementId!);
   const { mutateAsync, isPending } = useUpdateMovementMutation();

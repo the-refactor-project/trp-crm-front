@@ -17,3 +17,17 @@
 .button--outline {
   border-color: var(--accent-color);
 }
+
+.button--round {
+  border-radius: 50%;
+}
+
+.button--icon {
+  padding: 3px;
+
+  img {
+    display: block;
+    width: 15px;
+    height: 15px;
+  }
+}
