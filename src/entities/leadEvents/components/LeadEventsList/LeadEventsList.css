@@ -1,0 +1,21 @@
+.lead-events {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+
+.lead-event {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 25px;
+
+  &:hover .lead-event__action {
+    display: block;
+  }
+}
+
+.lead-event__action {
+  display: none;
+}

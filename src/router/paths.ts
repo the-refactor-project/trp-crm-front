@@ -11,6 +11,7 @@ const paths: Paths = {
     root: "leads",
     new: "crear",
     edit: "modificar",
+    events: "historial",
   },
   providers: {
     root: "proveedores",
