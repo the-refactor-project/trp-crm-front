@@ -21,9 +21,6 @@ const LeadsTable: React.FC<LeadsTableProps> = ({ leads, onDeleteLead }) => {
           <th className="datatable__cell datatable__cell--checkbox">&nbsp;</th>
           <th className="datatable__cell datatable__cell--date">Fecha</th>
           <th className="datatable__cell">Nombre</th>
-          <th className="datatable__cell datatable__cell--quantity">
-            Cantidad
-          </th>
           <th className="datatable__cell datatable__cell--actions">&nbsp;</th>
         </tr>
       </thead>
@@ -39,8 +36,13 @@ const LeadsTable: React.FC<LeadsTableProps> = ({ leads, onDeleteLead }) => {
             <td className="datatable__cell">
               {name} {lastName}
             </td>
-            <td className="datatable__cell datatable__cell--quantity"></td>
             <td className="datatable__cell datatable__cell--actions">
+              <Link
+                to={getPath("leads", "events", _id)}
+                className="button button--solid"
+              >
+                historial
+              </Link>
               <Link
                 to={getPath("leads", "edit", _id)}
                 className="button button--solid"
