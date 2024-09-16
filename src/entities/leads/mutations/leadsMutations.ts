@@ -1,9 +1,25 @@
 import { useMutation } from "@tanstack/react-query";
-import { LeadFormDataStructure, LeadStructure } from "../schema";
+import {
+  LeadDataStructure,
+  LeadFormDataStructure,
+  LeadStructure,
+} from "../schema";
 
 export const useAddLeadMutation = () => {
   return useMutation({
-    mutationFn: async (newLeadData: LeadFormDataStructure) => {
+    mutationFn: async (newLeadFormData: LeadFormDataStructure) => {
+      const newLeadData: LeadDataStructure = {
+        ...newLeadFormData,
+        entryDate: new Date(newLeadFormData.entryDate),
+        address: {
+          address: newLeadFormData.address,
+          locality: newLeadFormData.locality,
+          city: newLeadFormData.city,
+          country: newLeadFormData.country,
+          zip: newLeadFormData.zip,
+        },
+      };
+
       const response = await fetch(`${import.meta.env.VITE_API_URL}/leads`, {
         method: "POST",
         headers: {
@@ -27,13 +43,25 @@ export const useAddLeadMutation = () => {
 
 export const useUpdateLeadMutation = () => {
   return useMutation({
-    mutationFn: async (lead: LeadStructure) => {
+    mutationFn: async (lead: LeadFormDataStructure) => {
+      const leadData: LeadDataStructure = {
+        ...lead,
+        entryDate: new Date(lead.entryDate),
+        address: {
+          address: lead.address,
+          locality: lead.locality,
+          city: lead.city,
+          zip: lead.zip,
+          country: lead.country,
+        },
+      };
+
       const response = await fetch(`${import.meta.env.VITE_API_URL}/leads`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(lead),
+        body: JSON.stringify(leadData),
       });
 
       if (!response.ok) {

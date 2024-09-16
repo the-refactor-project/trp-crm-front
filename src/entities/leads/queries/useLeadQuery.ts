@@ -8,9 +8,16 @@ export const useLeadQuery = (leadId: LeadStructure["_id"]) => {
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/leads/${leadId}`,
       );
-      const body = (await response.json()) as { lead: LeadStructure };
+      const { lead } = (await response.json()) as { lead: LeadStructure };
 
-      return body.lead;
+      return {
+        ...lead,
+        address: lead.address?.address,
+        locality: lead.address?.locality,
+        city: lead.address?.city,
+        zip: lead.address?.zip,
+        country: lead.address?.country,
+      };
     },
     staleTime: 5000,
   });

@@ -22,6 +22,7 @@ export const leadSchema = z.object({
   askedFor: z.string().optional(),
   formComments: z.string().optional(),
   entryDate: z.date(),
+  githubUsername: z.string().optional(),
 });
 
 export type LeadStructure = z.infer<typeof leadSchema>;
