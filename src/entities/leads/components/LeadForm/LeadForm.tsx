@@ -26,6 +26,7 @@ const LeadForm: React.FC<LeadFormProps> = ({ initialValues, onSubmit }) => {
     phoneNumber: "",
     referralOf: "",
     entryDate: "",
+    githubUsername: "",
   };
 
   const [formValues, setFormValues] =
@@ -131,16 +132,43 @@ const LeadForm: React.FC<LeadFormProps> = ({ initialValues, onSubmit }) => {
         />
       </div>
       <div className="form__group">
-        <label htmlFor="formComments" className="form__label">
-          Comentarios del formulario:
+        <label htmlFor="githubUsername" className="form__label">
+          Usuario GitHub:
         </label>
-        <textarea
+        <input
+          type="text"
           className="form__control"
-          id="formComments"
-          value={formValues.formComments}
+          id="githubUsername"
+          value={formValues.githubUsername}
           onChange={changeFormValues}
         />
       </div>
+      <fieldset>
+        <legend>Formulario de contacto</legend>
+        <div className="form__group">
+          <label htmlFor="askedFor" className="form__label">
+            Preguntó por:
+          </label>
+          <input
+            type="text"
+            className="form__control"
+            id="askedFor"
+            value={formValues.askedFor}
+            onChange={changeFormValues}
+          />
+        </div>
+        <div className="form__group">
+          <label htmlFor="formComments" className="form__label">
+            Comentarios del formulario:
+          </label>
+          <textarea
+            className="form__control"
+            id="formComments"
+            value={formValues.formComments}
+            onChange={changeFormValues}
+          />
+        </div>
+      </fieldset>
       <div className="form__group">
         <label htmlFor="channel" className="form__label">
           Canal:
@@ -162,18 +190,6 @@ const LeadForm: React.FC<LeadFormProps> = ({ initialValues, onSubmit }) => {
           className="form__control"
           id="origin"
           value={formValues.origin}
-          onChange={changeFormValues}
-        />
-      </div>
-      <div className="form__group">
-        <label htmlFor="askedFor" className="form__label">
-          Preguntó por:
-        </label>
-        <input
-          type="text"
-          className="form__control"
-          id="askedFor"
-          value={formValues.askedFor}
           onChange={changeFormValues}
         />
       </div>

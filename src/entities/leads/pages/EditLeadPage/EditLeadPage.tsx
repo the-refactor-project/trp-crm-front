@@ -17,10 +17,10 @@ const EditLeadPage: React.FC = () => {
   const { mutateAsync, isPending } = useUpdateLeadMutation();
   const navigate = useNavigate();
 
-  const onUpdateLead = async (lead: LeadStructure) => {
+  const onUpdateLead = async (lead: LeadFormDataStructure) => {
     await mutateAsync(lead);
 
-    updateLead(lead);
+    updateLead(lead as LeadStructure);
 
     navigate(getPath("leads"));
   };
@@ -29,7 +29,7 @@ const EditLeadPage: React.FC = () => {
     <>
       <h1>Editar lead</h1>
       <LeadForm
-        onSubmit={(formValues) => onUpdateLead(formValues as LeadStructure)}
+        onSubmit={(formValues) => onUpdateLead(formValues)}
         initialValues={data as LeadFormDataStructure}
       />
       {isError && <Error message="No se han podido cargar los datos" />}
