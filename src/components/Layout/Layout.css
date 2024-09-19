@@ -8,6 +8,11 @@
   align-items: center;
 }
 
+.section-header__actions {
+  display: flex;
+  gap: 10px;
+}
+
 .main-content {
   padding-bottom: 20px;
 }

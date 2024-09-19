@@ -34,6 +34,10 @@ const LeadsPage: React.FC = () => {
     navigate(getPath("leads", "new"));
   };
 
+  const navigateToImportLeadsPage = () => {
+    navigate(getPath("leads", "import"));
+  };
+
   const deleteLead = async () => {
     await mutateAsync(isConfirmOpen);
 
@@ -54,7 +58,12 @@ const LeadsPage: React.FC = () => {
     <>
       <header className="section-header">
         <h1>Leads ({leads.length})</h1>
-        <ButtonSolid onClick={navigateToNewLeadPage}>Nuevo</ButtonSolid>
+        <div className="section-header__actions">
+          <ButtonSolid onClick={navigateToImportLeadsPage}>
+            Importar
+          </ButtonSolid>
+          <ButtonSolid onClick={navigateToNewLeadPage}>Nuevo</ButtonSolid>
+        </div>
       </header>
       <LeadsTable leads={leads} onDeleteLead={openConfirm} />
       {isLoading || (isPending && <Loading />)}
