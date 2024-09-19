@@ -12,6 +12,7 @@ const paths: Paths = {
     new: "crear",
     edit: "modificar",
     events: "historial",
+    import: "importar",
   },
   providers: {
     root: "proveedores",

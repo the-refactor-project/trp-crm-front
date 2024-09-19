@@ -93,3 +93,21 @@ export const useDeleteLeadMutation = () => {
     },
   });
 };
+
+export const useImportLeadsMutation = () => {
+  return useMutation({
+    mutationFn: async (formData: FormData) => {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/leads/import`,
+        {
+          method: "POST",
+          body: formData,
+        },
+      );
+
+      if (!response.ok) {
+        throw new Error("Error al importar los leads");
+      }
+    },
+  });
+};
