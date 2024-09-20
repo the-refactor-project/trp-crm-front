@@ -30,7 +30,6 @@ const LeadEventsPage: React.FC = () => {
 
   const submitForm = async (formValues: LeadEventFormDataStructure) => {
     formValues.date = new Date(formValues.date);
-    formValues.leadId = leadId!;
 
     await mutateAsyncAdd(formValues);
   };
@@ -60,7 +59,7 @@ const LeadEventsPage: React.FC = () => {
           onDeleteLeadEvent={openConfirm}
         />
       )}
-      <LeadEventForm onSubmit={submitForm} />
+      <LeadEventForm leadId={leadId} onSubmit={submitForm} />
       {(isLoading || isAddPending || isDeletePending) && <Loading />}
       {isConfirmOpen && (
         <Confirm

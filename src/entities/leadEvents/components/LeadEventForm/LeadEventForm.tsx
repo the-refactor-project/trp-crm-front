@@ -3,14 +3,15 @@ import ButtonSolid from "../../../../components/ButtonSolid";
 import { LeadEventFormDataStructure } from "../../schema";
 
 interface LeadEventFormProps {
+  leadId?: string;
   onSubmit: (formValues: LeadEventFormDataStructure) => void;
 }
 
-const LeadEventForm: React.FC<LeadEventFormProps> = ({ onSubmit }) => {
+const LeadEventForm: React.FC<LeadEventFormProps> = ({ leadId, onSubmit }) => {
   const initialFormValues: LeadEventFormDataStructure = {
     description: "",
-    date: "",
-    leadId: "",
+    date: new Date().toISOString().split("T")[0],
+    leadId: leadId ?? "",
   };
   const [formValues, setFormValues] =
     useState<LeadEventFormDataStructure>(initialFormValues);
@@ -28,6 +29,8 @@ const LeadEventForm: React.FC<LeadEventFormProps> = ({ onSubmit }) => {
     event.preventDefault();
 
     onSubmit(formValues);
+
+    setFormValues(initialFormValues);
   };
 
   return (
